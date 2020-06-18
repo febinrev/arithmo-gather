@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-#cc=5327020213079315
 import readline
 import requests
 from bs4 import BeautifulSoup
