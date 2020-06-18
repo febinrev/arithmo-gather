@@ -40,16 +40,7 @@ def check_cc(cc):
 		value="None"
 		
 	return value
-print("""
-Available Options:>
 
-[1] Credit Card number info
-[2] BIN info (first 6 digits of CC)
-[3] IFSC number info (India only)
-[4] MICR number info
-[5] Phone Number Info
-
- """)
 def CC(cc):
 	if check_cc(cc)==True:
 		print("Luhn Algorithm check Success")
@@ -122,7 +113,7 @@ def ifsc(ifsc):
 			display=data.get_text()
 			print(display.strip())
 		except:
-			print("Cannot fetch info!! Something Error!")
+			print("Cannot fetch info!! Something Error! check internet and try again!")
 	else:
 		print("Length/Alpha numeric exception!! Invalid IFSC!")
 def micr(micr):
@@ -136,8 +127,8 @@ def micr(micr):
 			start=display.strip().find("MICR Code:-")
 			repl="""2010 - 20, BankIFSCcode.comDisclaimer: - We have tried our best to keep the latest information updated as available from RBI, users are requested to confirm information with the respective bank before using the information provided. The author reserves the right not to be responsible for the topicality, correctness, completeness or quality of the information provided. Liability claims regarding damage caused by the use of any information provided, including any kind of information which is incomplete or incorrect, will therefore be rejected."""
 			print(display.strip()[start:].replace("HOME","").replace(repl,"").replace("|","").replace("LOCATE ANY BRANCH IN INDIA (Select Bank Name - State - District - branch to see Details)","").replace("Find Branch Details/Address/MICR Code By IFSC Code","").replace("Find IFSC/Branch Details By MICR Code","").replace("ALL INDIA BANK LIST","").replace("HELP/CONTACT US","").strip())
-		except KeyboardInterrupt:
-			print("Cannot fetch info!! Something Error!")
+		except:
+			print("Cannot fetch info!! Something Error! check Internet And try again!")
 		
 
 
@@ -192,6 +183,16 @@ print("""
                                         | the personal Informations   |
                                          -----------------------------
  """)	
+print("""
+Available Options:>
+
+[1] Credit Card number info
+[2] BIN info (first 6 digits of CC)
+[3] IFSC number info (India only)
+[4] MICR number info
+[5] Phone Number Info
+
+ """)
 try:
 	choice=input("Enter the choice :> ").strip()
 	if choice=="1":
