@@ -1,5 +1,5 @@
 # Arithm0-Gath3r
-## Numbers in Your Documents can reveal your personal informations. "Especially banking informations! "
+### Numbers in Your Documents can reveal your personal informations. "Especially banking informations! "
 
 ### This tool is an OSINT tool to gather informations from CreditCard number, BIN code, MICR number, IFSC code , Phone number
 
@@ -12,3 +12,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------
 ### Note : Feel free to modify my code and make your own! But give me a credit before You use my code.
 
+## Usage:
+------------------------------------------------------------------------------------------------------------------------------
+    $ pip3 install -r requirements.txt
+    $ python3 arithmo-gather.py
