@@ -1,8 +1,9 @@
 # Arithm0-Gath3r
-## Numbers in Your Documents can reveal your personal informations. 
+## Numbers in Your Documents can reveal your personal informations. "Especially banking informations! "
+
 ### This tool is an OSINT tool to gather informations from CreditCard number, BIN code, MICR number, IFSC code , Phone number
 
-### It can be useful for OSINT researchers, hackers , and Law & enforcement officers 
+### It can be useful for OSINT researchers, Dumpster diving , hackers , and Law & enforcement officers 
 
 
 ## Disclaimer : It is only for Educational Purposes!!
