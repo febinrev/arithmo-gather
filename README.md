@@ -16,6 +16,7 @@
 ------------------------------------------------------------------------------------------------------------------------------
     $ pip3 install -r requirements.txt
     $ python3 arithmo-gather.py
+![Arithmo-Gather Screenshot](https://github.com/febinrev/arithmo-gather/raw/master/arithmo_gather.png)
 
 #### TroubleShoot:
 -------------------------------------------------------------------------------------------------------------------------------
