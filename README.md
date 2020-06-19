@@ -16,6 +16,8 @@
 ------------------------------------------------------------------------------------------------------------------------------
     $ pip3 install -r requirements.txt
     $ python3 arithmo-gather.py
+    
+    [Then Enter the Appropriate option number and enter the Code/number like CC to gather the informations about it!!]
 
 #### TroubleShoot:
 -------------------------------------------------------------------------------------------------------------------------------
