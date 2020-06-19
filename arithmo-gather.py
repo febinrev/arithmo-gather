@@ -41,8 +41,8 @@ def check_cc(cc):
 	return value
 
 def CC(cc):
-	if check_cc(cc)==True:
-		print("Luhn Algorithm check Success")
+	if cc.isdigit() and check_cc(cc)==True:
+		print("\nLuhn Algorithm check Success\n")
 		checkbin=binlist.BIN(str(cc)[0:6])
 		credit_card=checkbin.lookup().verbose_name
 		print(f"CREDIT CARD : {credit_card} ")
@@ -72,8 +72,8 @@ def CC(cc):
 	else:
 		print("Luhn Algorithm check failed! Invalid CC!!")
 def Bin(Bin):
-	if len(str(Bin))==6:
-		print("Luhn Algorithm check Success")
+	if Bin.isdigit() and len(Bin)==6:
+		print("\nLuhn Algorithm check Success\n")
 		checkbin=binlist.BIN(Bin)
 		credit_card=checkbin.lookup().verbose_name
 		print(f"CREDIT CARD : {credit_card} ")
@@ -100,35 +100,41 @@ def Bin(Bin):
 		except:
 			print("Cannot fetch informations!! Check Your Internet And Try Again later!!")
 	else:
-		print("Length exception! Invalid BIN!!")
+		print("Length/value exception! Invalid BIN!!")
 def ifsc(ifsc):
-	if len(ifsc)==11 and ifsc.isalnum() and ifsc.isupper():
+	if len(ifsc)==11 and ifsc.isalnum():
+		if ifsc.isupper():
+			ifsc=ifsc
+		elif ifsc.islower():
+			ifsc=ifsc.upper()
 		try:
-			print("Gathering info....\n")
+			print("\nGathering info....\n")
 			data1=BeautifulSoup(requests.post("https://bank.codes/india-ifsc-code-checker/",data={'ifsc':ifsc}).text , "html.parser")
 			data=data1.find('table')
 			for script in data(["script","style"]):
 				script.extract()
 			display=data.get_text()
-			print(display.strip())
+			print(display.strip().replace("Bank","Bank  ").replace("Branch","Branch  ").replace("Address","Address  ").replace("City","City  ").replace("State","State  ").replace("Contact","Contact  ").replace("District","District  ").replace("MICR Number","MICR Number  ").replace("IFSC Code","IFSC Code  "))
 		except:
 			print("Cannot fetch info!! Something Error! check internet and try again!")
 	else:
 		print("Length/Alpha numeric exception!! Invalid IFSC!")
 def micr(micr):
-	if len(micr)==9:
+	if micr.isdigit() and len(micr)==9:
 		try:
-			print("Gathering info....\n")
+			print("\nGathering info....\n")
 			data=BeautifulSoup(requests.get(f"https://micr.bankifsccode.com/{micr}").text, "html.parser")
 			for script in data(["script","style"]):
 				script.extract()
 			display=data.get_text()
 			start=display.strip().find("MICR Code:-")
 			repl="""2010 - 20, BankIFSCcode.comDisclaimer: - We have tried our best to keep the latest information updated as available from RBI, users are requested to confirm information with the respective bank before using the information provided. The author reserves the right not to be responsible for the topicality, correctness, completeness or quality of the information provided. Liability claims regarding damage caused by the use of any information provided, including any kind of information which is incomplete or incorrect, will therefore be rejected."""
-			print(display.strip()[start:].replace("HOME","").replace(repl,"").replace("|","").replace("LOCATE ANY BRANCH IN INDIA (Select Bank Name - State - District - branch to see Details)","").replace("Find Branch Details/Address/MICR Code By IFSC Code","").replace("Find IFSC/Branch Details By MICR Code","").replace("ALL INDIA BANK LIST","").replace("HELP/CONTACT US","").strip())
+			result=display.strip()[start:].replace("HOME","").replace(repl,"").replace("|","").replace("LOCATE ANY BRANCH IN INDIA (Select Bank Name - State - District - branch to see Details)","").replace("Find Branch Details/Address/MICR Code By IFSC Code","").replace("Find IFSC/Branch Details By MICR Code","").replace("ALL INDIA BANK LIST","").replace("HELP/CONTACT US","").strip()
+			print(result.replace("Bank","  Bank").replace("Branch","  Branch").replace("Address","  Address").replace("City","  City").replace("State","  State").replace("Contact","  Contact").replace("District","  District").replace("MICR Code","  MICR Code").replace("IFSC Code","  IFSC Code").replace("  ","\n").replace("(Click here for all the branches of","").replace(" District)","").replace("\n IFSC Code represent"," IFSC Code represent").replace("\n Branch code."," Branch code."))
 		except:
 			print("Cannot fetch info!! Something Error! check Internet And try again!")
-		
+	else:
+		print("Invalid MICR number!!")
 
 
 		
@@ -139,7 +145,7 @@ def num(num):
 		num="+"+num
 		number=phonenumbers.parse(num,None)
 	try:
-		print(f"""Basic Informations...
+		print(f"""\nBasic Informations...
 		
 		NUMBER            :  {num}
 		VALID             :  {phonenumbers.is_valid_number(number)}
@@ -176,24 +182,24 @@ print("""
 ╔═╗╦═╗╦┌┬┐╦ ╦╔╦╗┌─┐   ╔═╗┌─┐╔╦╗┬ ┬╔═╗┬─┐
 ╠═╣╠╦╝║ │ ╠═╣║║║│ │───║ ╦├─┤ ║ ├─┤║╣ ├┬┘
 ╩ ╩╩╚═╩ ┴ ╩ ╩╩ ╩└─┘   ╚═╝┴ ┴ ╩ ┴ ┴╚═╝┴└─
-                                         -----< Coded by FEBIN >------
+                                        .-----< Coded by FEBIN >------.
                                         |   Gather Info from numbers  | 
                                         |Every numbers could reveal   |
                                         | the personal Informations   |
-                                         -----------------------------
+                                        '-----------------------------'
  """)	
 print("""
 Available Options:>
 
 [1] Credit Card number info
 [2] BIN info (first 6 digits of CC)
-[3] IFSC number info (India only)
+[3] IFSC Code info (India only)
 [4] MICR number info
 [5] Phone Number Info
 
  """)
 try:
-	choice=input("Enter the choice :> ").strip()
+	choice=input("Enter the option :> ").strip()
 	if choice=="1":
 		cc=input("ENTER THE CREDIT CARD NUMBER : ").strip()
 		CC(cc)
@@ -207,12 +213,12 @@ try:
 		micrnum=input("ENTER THE MICR NUMBER : ").strip()
 		micr(micrnum)
 	elif choice=="5":
-		number=input("ENTER THE PHONE NUMBER : ").strip()
+		number=input("ENTER THE PHONE NUMBER [with country prefix eg: +91 ] : ").strip()
 		num(number)
 	else:
 		print("Invalid Choice!!")
 except KeyboardInterrupt:
-	print("User Interrupted!! Bye!")
+	print("\n User Interrupted!! Bye!")
 	
  			
  			
