@@ -19,7 +19,20 @@
     
     [Then Enter the Appropriate option number and enter the Code/number like CC or PhoneNumber to gather the informations about it!!]
 
-#### TroubleShoot:
+## Examples:
+#### Credit Card informations 
+![CC info](screenshots/CC.jpg)
+
+#### IFSC code informations
+![IFSC info](screenshots/IFSC.jpg)
+
+#### MICR number informations
+![MICR info](screenshots/micr.jpg)
+
+#### Phone number informations
+![Phone info](screenshots/phone.png)
+
+### TroubleShoot:
 -------------------------------------------------------------------------------------------------------------------------------
     * If you are constantly facing errors it may be caused due to API key expiry. 
     * So if you want to run it more smoothly and efficiently it is recommended to use your own API keys from bincodes.com and numverify.com . 
