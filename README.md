@@ -24,4 +24,4 @@
     * If you are constantly facing errors it may be caused due to API key expiry. 
     * So if you want to run it more smoothly and efficiently it is recommended to use your own API keys from bincodes.com and numverify.com . 
     * Paste the api key of bincodes.com in the " key1 " variable and numverify.com api key in " pkey " variable.
-    Both variables are declared at the beginning the code.
+    Both variables are declared at the beginning of the source code.
