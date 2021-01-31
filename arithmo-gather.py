@@ -15,7 +15,7 @@ pkey="38d492d349e67433b3a2a229fd784821"
 
 def CC(cc):
 	if cc.isdigit() and len(cc)==16:
-		print("\nLuhn Algorithm check Success\n")
+		print("\n........................\n")
 		checkbin=binlist.BIN(str(cc)[0:6])
 		credit_card=checkbin.lookup().verbose_name
 		print(f"CREDIT CARD : {credit_card} ")
@@ -192,7 +192,9 @@ try:
 		print("Invalid Choice!!")
 except KeyboardInterrupt:
 	print("\n User Interrupted!! Bye!")
-	
+except:
+
+	print("Something Went Wrong")
  			
  			
  			
