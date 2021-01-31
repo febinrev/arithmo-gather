@@ -11,37 +11,10 @@ from phonenumbers import geocoder
 
 key1="e4b4ac1c7eb77ef45f4a867728cfa2f7"
 pkey="38d492d349e67433b3a2a229fd784821"
-def check_cc(cc):
-	str_cc=str(cc)[:15]
-	checksum=str(cc)[-1]
-	cc_odd=str_cc[0::2]
-	cc_even=str_cc[1::2]
-	if str(cc).isdigit() and len(str(cc))==16:
-		num1=""
-		for digit in cc_odd:
-			tmp=str(int(digit)*2)
-			if len(tmp) == 2:
-				tmp=str(int(tmp[0])+int(tmp[1]))
-			else:
-				tmp=tmp
-			num1 += tmp
-		num2=cc_even
-		number=cc_odd+cc_even
-		num=0
-		for i in number:
-			num+=int(i)
-		
-		if (num + int(checksum)) % 10 == 0:
-			value=True
-		else:
-			value=False
-	else:
-		value="None"
-		
-	return value
+
 
 def CC(cc):
-	if cc.isdigit() and check_cc(cc)==True:
+	if cc.isdigit() and len(cc)==16:
 		print("\nLuhn Algorithm check Success\n")
 		checkbin=binlist.BIN(str(cc)[0:6])
 		credit_card=checkbin.lookup().verbose_name
@@ -67,10 +40,10 @@ def CC(cc):
 			PHONE         : {online_check['phone']}
 			VALID         : {online_check['valid']}
 			 """)
-		except ll:
+		except:
 			print("Cannot fetch informations!! Check Your Internet And Try Again later!!")
 	else:
-		print("Luhn Algorithm check failed! Invalid CC!!")
+		print("failed! Invalid CC!!")
 def Bin(Bin):
 	if Bin.isdigit() and len(Bin)==6:
 		print("\nLuhn Algorithm check Success\n")
